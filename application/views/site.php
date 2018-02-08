@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>Página Inicial</title>	
+	<?php  echo link_tag('assets/css/site.css')?>
 </head>
 <body>
 	<div id="container">
