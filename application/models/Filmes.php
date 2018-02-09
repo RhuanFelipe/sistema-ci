@@ -6,14 +6,18 @@ class Filmes extends CI_MODEL{
 		parent::__construct();
 	}
 
-	function listar_filmes_all()
+	function listar_filmes_all($por_pagina,$inicio)
 	{
 		// opcional = $this->db->select();
-		$this->db->select()->from('filmes');
+		$this->db->select()->from('filmes')->limit($por_pagina,$inicio);
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
+	function total_filmes()
+	{
+		$query = $this->db->get('filmes');
+		return $query->num_rows();
+	}
 	function cadastrar_filmes($attribute){
 		$this->db->insert('filmes',$attribute);
 	}

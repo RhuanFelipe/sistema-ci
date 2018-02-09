@@ -6,3 +6,7 @@ foreach($listar_filmes_all as $filmes):
 	echo "<p>".$filmes->desc_filme."</p>";
 	echo "</div>";
 endforeach;
+
+echo $paginacao_filmes;
+?>
+
