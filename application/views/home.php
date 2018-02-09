@@ -5,5 +5,4 @@ foreach($listar_filmes_all as $filmes):
 	echo ucwords(heading($filmes->nome_filme, 2));
 	echo "<p>".$filmes->desc_filme."</p>";
 	echo "</div>";
-endforeach
-?>
+endforeach;
