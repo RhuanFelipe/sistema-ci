@@ -7,7 +7,6 @@ class Site extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Filmes');
-		$this->load->library('pagination');
 	}
 
 	public function cadastrar(){
@@ -35,7 +34,6 @@ class Site extends CI_Controller {
 	public function index()
 	{
 		$inicio = ($this->uri->segment(2) != '') ? $inicio = $this->uri->segment(2) : $inicio = 0;
-
 		$config = array(
 			"base_url" => base_url('page'),
 			"per_page" => 2,
@@ -65,8 +63,9 @@ class Site extends CI_Controller {
 
 		$this->pagination->initialize($config);
 		$data['paginacao_filmes'] = $this->pagination->create_links();
+		
 		$data['view'] = 'home';
-
+		$data['titulo'] = 'FilmesMania | Home';
 		$data['listar_filmes_all'] = $this->Filmes->listar_filmes_all($config['per_page'], $inicio);
 		$this->load->view('Site',$data);
 	}
