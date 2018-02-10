@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div id="container" class="container">
-		<h1>Site Codeigniter!</h1>
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">

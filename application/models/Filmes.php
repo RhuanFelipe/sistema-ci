@@ -6,7 +6,7 @@ class Filmes extends CI_MODEL{
 		parent::__construct();
 	}
 
-	function listar_filmes_all($por_pagina,$inicio)
+	function listar_filmes_all($por_pagina = 0,$inicio = 0)
 	{
 		// opcional = $this->db->select();
 		$this->db->select()->from('filmes')->limit($por_pagina,$inicio);

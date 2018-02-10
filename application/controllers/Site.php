@@ -34,22 +34,40 @@ class Site extends CI_Controller {
 
 	public function index()
 	{
-		$por_pagina = 2;
-		$inicio = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-		$config['per_page'] = $por_pagina;
-		$config['base_url'] = base_url().'page/';
-		$config['num_links'] = 5;
-		$config['first_url'] = 0;
-		$config['uri_segment'] = 2;
-		$config['next_link'] = '&raquo;&raquo;';
-		$config['prev_link'] = '&laquo;&laquo;';
-		$config['total_rows'] = $this->Filmes->total_filmes();
-		
+		$inicio = ($this->uri->segment(2) != '') ? $inicio = $this->uri->segment(2) : $inicio = 0;
+
+		$config = array(
+			"base_url" => base_url('page'),
+			"per_page" => 2,
+			"num_links" => 5,
+			"uri_segment" => 2,
+			"total_rows" => $this->Filmes->total_filmes(),
+			"full_tag_open" => "<ul class='pagination'>",
+			"full_tag_close" => "</ul>",
+			"first_link" => FALSE,
+			"last_link" => FALSE,
+			"first_tag_open" => "<li>",
+			"first_tag_close" => "</li>",
+			"prev_link" => "Anterior",
+			"prev_tag_open" => "<li class='prev'>",
+			"prev_tag_close" => "</li>",
+			"next_link" => "Próxima",
+			"next_tag_open" => "<li class='next'>",
+			"next_tag_close" => "</li>",
+			"last_tag_open" => "<li>",
+			"last_tag_close" => "</li>",
+			"cur_tag_open" => "<li class='active'><a href='#'>",
+			"cur_tag_close" => "</a></li>",
+			"num_tag_open" => "<li>",
+			"num_tag_close" => "</li>"
+		);
+
+
 		$this->pagination->initialize($config);
 		$data['paginacao_filmes'] = $this->pagination->create_links();
 		$data['view'] = 'home';
 
-		$data['listar_filmes_all'] = $this->Filmes->listar_filmes_all($por_pagina, $inicio);
+		$data['listar_filmes_all'] = $this->Filmes->listar_filmes_all($config['per_page'], $inicio);
 		$this->load->view('Site',$data);
 	}
 }
