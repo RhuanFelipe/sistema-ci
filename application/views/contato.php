@@ -20,18 +20,22 @@
 		    <input type="text" class="form-control" name="nome" id="exampleInputEmail1"  placeholder="informe o nome">
 		  </div>
 		 </div>
-
 		 <div class="col-sm-12">
 		  <div class="form-group col-sm-6">
 		    <label for="exampleInputEmail1">Email:</label>
 		    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="informe o email">
 		  </div>
 		</div>
-		 <div class="col-sm-12">
+		<div class="col-sm-12">
 		  <div class="form-group col-sm-6">
 		    <label for="exampleInputEmail1">Assunto:</label>
-		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="assunto"></textarea>
-
+		    <input type="text" name="assunto" class="form-control" id="exampleInputEmail1" placeholder="informe o email">
+		  </div>
+		</div>
+		 <div class="col-sm-12">
+		  <div class="form-group col-sm-6">
+		    <label for="exampleInputEmail1">Mensagem:</label>
+		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="mensagem"></textarea>
 		  </div>
 		</div>
 		 <div class="col-sm-12">

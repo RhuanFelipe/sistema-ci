@@ -23,18 +23,32 @@ class Contato extends CI_Controller {
 		if($_POST):
 			$this->form_validation->set_rules('nome', 'Nome', 'trim|required');
 			$this->form_validation->set_rules('assunto', 'Assunto', 'trim|required');
+			$this->form_validation->set_rules('mensagem', 'Mensagem', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
 			if (!$this->form_validation->run()){
 				$data['errors'] = validation_errors();
 			}else{
-				$data['sucesso'] = 'Formulário enviado com sucesso!';
-			}
-			
+				$this->load->library('email');
+				$config = $this->email->setConfiguration();
+                $this->email->initialize($config);
 
-			$data['view'] = 'contato';
-			$data['titulo'] = 'FilmesMania | contato';
-			$this->load->view('Site',$data);
+				$data['sucesso'] = 'Formulário enviado com sucesso!';
+				$this->email->to('rhuanfelsilva@gmail.com');
+				$this->email->from($this->input->post('email'));
+				$this->email->subject($this->input->post('assunto'));
+				$this->email->message($this->input->post('mensagem'));
+
+				if($this->email->send())
+					$data['enviado'] = true;
+				else
+					show_error($this->email->print_debugger());
+			}			
+
 		endif;
+
+		$data['view'] = 'contato';
+		$data['titulo'] = 'FilmesMania | contato';
+		$this->load->view('Site',$data);
 	}
 }
