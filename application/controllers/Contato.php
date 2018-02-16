@@ -32,9 +32,8 @@ class Contato extends CI_Controller {
 				$this->load->library('email');
 				$config = $this->email->setConfiguration();
                 $this->email->initialize($config);
-
 				$data['sucesso'] = 'Formulário enviado com sucesso!';
-				$this->email->to('rhuanfelsilva@gmail.com');
+				$this->email->to('rhuanfelsilva@yahoo.com');
 				$this->email->from($this->input->post('email'));
 				$this->email->subject($this->input->post('assunto'));
 				$this->email->message($this->input->post('mensagem'));
