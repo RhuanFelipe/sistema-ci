@@ -67,10 +67,9 @@ class MY_Upload extends CI_Upload{
         $this->config['max_size'] = $this->getSize();
         $this->config['max_height'] = $this->getHeight();
         $this->config['max_width'] = $this->getWidth();
-
         $this->config['upload_path'] = $this->getPath();
-        return $this->config;
         
+        return $this->config;
     }  
     
 }
